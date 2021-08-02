@@ -16,5 +16,11 @@ pipeline {
       }
     }
 
+    stage('Notify') {
+      steps {
+        bat 'curl -s -X POST https://api.telegram.org/bot1744027847:AAF8V-o7lnQ0Iwsx0yo88LHMxRhYeRcTbJc/sendMessage -d chat_id=-558326056 -d text="New updates on application at http://test.frontierviewer.com/#/main"'
+      }
+    }
+
   }
 }
