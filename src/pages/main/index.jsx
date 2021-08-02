@@ -12,15 +12,15 @@ import {
 
 // import { appointments } from "../../../demo-data/month-appointments";
 
-const currentDate = "2018-07-17";
+const currentDate = "2021-08-02";
 
 const Main = () => {
-  const [date, setDate] = React.useState("2021-08-02");
+  //   const [date, setDate] = React.useState("2021-08-02");
 
   return (
     <Paper>
       <Scheduler>
-        <ViewState currentDate={date} />
+        <ViewState currentDate={currentDate} />
         <MonthView />
         <Toolbar />
         <DateNavigator />
