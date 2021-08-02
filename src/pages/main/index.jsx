@@ -20,7 +20,7 @@ const Main = () => {
   return (
     <Paper>
       <Scheduler>
-        <ViewState currentDate={currentDate} />
+        <ViewState defaultCurrentDate={currentDate} />
         <MonthView />
         <Toolbar />
         <DateNavigator />
