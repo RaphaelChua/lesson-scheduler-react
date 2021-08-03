@@ -9,7 +9,7 @@ const main = lazy(() => import("../main"));
 const Routes = () => {
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading......</div>}>
         <Switch>
           <Route path="/main" component={main} />
           <Route path="/login" component={login} />
