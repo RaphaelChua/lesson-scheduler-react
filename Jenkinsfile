@@ -1,5 +1,10 @@
 pipeline {
   agent any
+  triggers {
+    when {
+      branch "main"
+    }
+  }
   stages {
     stage('Initialise') {
       steps {
