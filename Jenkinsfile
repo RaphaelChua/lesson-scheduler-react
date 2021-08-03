@@ -18,13 +18,9 @@ pipeline {
 
     stage('Notify') {
       steps {
-        bat 'echo $botID'
+        bat 'python3 telegram.py 1744027847:AAF8V-o7lnQ0Iwsx0yo88LHMxRhYeRcTbJc -558326056 "Testing! 123"'
       }
     }
 
-  }
-  environment {
-    botID = '1744027847:AAF8V-o7lnQ0Iwsx0yo88LHMxRhYeRcTbJc'
-    chatID = '-558326056'
   }
 }
