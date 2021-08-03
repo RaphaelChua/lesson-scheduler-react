@@ -24,6 +24,6 @@ pipeline {
 
   }
   environment {
-    PYTHON3 = 'C:\\Users\\Raphael\\AppData\\Local\\Programs\\Python\\Python39'
+    PYTHON3 = 'C:\\Users\\Raphael\\AppData\\Local\\Programs\\Python\\Python39\\python.exe'
   }
 }
