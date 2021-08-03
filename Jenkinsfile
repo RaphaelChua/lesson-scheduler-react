@@ -1,10 +1,9 @@
 pipeline {
   agent any
-  triggers {
-    when {
-      branch "main"
-    }
+  when {
+    env.BRANCH == "main"
   }
+  
   stages {
     stage('Initialise') {
       steps {
