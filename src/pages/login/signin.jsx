@@ -3,8 +3,8 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+// import FormControlLabel from "@material-ui/core/FormControlLabel";
+// import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
@@ -12,15 +12,17 @@ import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import dayjs from "dayjs";
 
 const Copyright = () => {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
+      {"Copyright © place holder "}
+
+      {/* <Link color="inherit" href="https://material-ui.com/">
         Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
+      </Link>{" "} */}
+      {dayjs().year()}
       {"."}
     </Typography>
   );
@@ -28,7 +30,7 @@ const Copyright = () => {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(17),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -46,23 +48,48 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Login = () => {
+const SignIn = () => {
   const classes = useStyles();
+  const [input, setInput] = React.useState({
+    email: "",
+    password: "",
+  });
+
+  // const handleEmailValidation = () => {};
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setInput({ ...input, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    window.alert(
+      `Your email is ${input.email}. Your password is ${input.password}`
+    );
+  };
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
+        <Typography component="h1" variant="h3">
+          Place Holder
+        </Typography>
+        <br />
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form}>
           <TextField
             variant="outlined"
             margin="normal"
+            // error={handleEmailValidation}
+            onChange={handleChange}
             required
             fullWidth
             id="email"
@@ -70,10 +97,12 @@ const Login = () => {
             name="email"
             autoComplete="email"
             autoFocus
+            value={input.email}
           />
           <TextField
             variant="outlined"
             margin="normal"
+            onChange={handleChange}
             required
             fullWidth
             name="password"
@@ -81,17 +110,18 @@ const Login = () => {
             type="password"
             id="password"
             autoComplete="current-password"
+            value={input.password}
           />
-          <FormControlLabel
+          {/* <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
-          />
+          /> */}
           <Button
-            type="submit"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={handleSubmit}
           >
             Sign In
           </Button>
@@ -101,11 +131,11 @@ const Login = () => {
                 Forgot password?
               </Link>
             </Grid>
-            <Grid item>
+            {/* <Grid item>
               <Link href="#" variant="body2">
                 {"Don't have an account? Sign Up"}
               </Link>
-            </Grid>
+            </Grid> */}
           </Grid>
         </form>
       </div>
@@ -116,4 +146,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignIn;
