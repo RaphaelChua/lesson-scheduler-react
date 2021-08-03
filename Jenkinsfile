@@ -18,7 +18,7 @@ pipeline {
 
     stage('Notify') {
       steps {
-        echo '$botID'
+        bat 'echo $botID'
       }
     }
 
