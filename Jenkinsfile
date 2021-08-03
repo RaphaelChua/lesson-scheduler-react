@@ -1,9 +1,5 @@
 pipeline {
   agent any
-  when {
-    env.BRANCH == "main"
-  }
-  
   stages {
     stage('Initialise') {
       steps {
