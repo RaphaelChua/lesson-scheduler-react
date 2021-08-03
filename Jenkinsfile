@@ -18,7 +18,7 @@ pipeline {
 
     stage('Notify') {
       steps {
-        echo 'test'
+        echo '$botID'
       }
     }
 
