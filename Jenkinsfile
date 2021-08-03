@@ -18,12 +18,9 @@ pipeline {
 
     stage('Notify') {
       steps {
-        bat '%PYTHON3% telegram.py %botID% $chatID "Testing! 123"'
+        bat '%PYTHON3% telegram.py %botID% %chatID% "Testing! 123"'
       }
     }
 
-  }
-  environment {
-    PYTHON3 = 'C:\\Users\\Raphael\\AppData\\Local\\Programs\\Python\\Python39\\python.exe'
   }
 }
