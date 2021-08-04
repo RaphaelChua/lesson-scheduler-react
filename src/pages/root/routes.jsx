@@ -1,17 +1,13 @@
-import React, { Suspense, lazy } from "react";
-import LazyPageLoader from "../../components/LazyPageLoader";
-import { Switch, Route } from "react-router-dom";
+import React, { lazy } from "react";
+import { Route } from "react-router-dom";
 
 const main = lazy(() => import("../main"));
 
-const Routes = () => {
+const Routes = ({ match }) => {
+  console.log(match);
   return (
     <>
-      <Suspense fallback={<LazyPageLoader />}>
-        <Switch>
-          <Route path="/main" component={main} />
-        </Switch>
-      </Suspense>
+      <Route exact path={`${match.url}/main`} component={main} />
     </>
   );
 };

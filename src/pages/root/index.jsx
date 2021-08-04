@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import Routes from "./routes";
 import TopAppBar from "./topappbar";
-import { HashRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Route } from "react-router-dom";
 // import { makeStyles } from "@material-ui/core/styles";
 import LazyPageLoader from "../../components/LazyPageLoader";
 
@@ -18,38 +18,36 @@ const ForgotPass = lazy(() => import("../login/forgotpass"));
 //   },
 // }));
 
-const LoginContainer = () => {
+const LoginContainer = ({ match }) => {
   // const classes = useStyles();
   return (
     <>
-      <Suspense fallback={<LazyPageLoader />}>
-        <Switch>
-          <Route path="/sign-in" component={SignIn} />
-          <Route path="/forgot-password" component={ForgotPass} />
-          <Route path="/sign-up" component={SignUp} />
-        </Switch>
-      </Suspense>
+      <Route exact path="/sign-in" component={SignIn} />
+      <Route exact path="/forgot-password" component={ForgotPass} />
+      <Route exact path="/sign-up" component={SignUp} />
     </>
   );
 };
 
-const DefaultContainer = () => {
+const DefaultContainer = ({ match }) => {
   return (
     <div>
       <TopAppBar />
-      <Routes />
+      <Routes match={match} />
     </div>
   );
 };
 
 const Root = () => {
   return (
-    <HashRouter>
-      <Switch>
+    <BrowserRouter>
+      <Suspense fallback={<LazyPageLoader />}>
+        {/* <Switch> */}
+        <Route path="/v1" component={DefaultContainer} />
         <Route component={LoginContainer} />
-        <Route component={DefaultContainer} />
-      </Switch>
-    </HashRouter>
+        {/* </Switch> */}
+      </Suspense>
+    </BrowserRouter>
   );
 };
 
