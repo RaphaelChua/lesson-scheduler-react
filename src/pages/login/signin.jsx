@@ -87,12 +87,16 @@ const SignIn = () => {
       setErrorEmail(true);
       setHelperTextEmail("Email is empty");
     }
+    if (input.email && !validator.isEmail(input.email)) {
+      setErrorEmail(true);
+      setHelperTextEmail("Invalid email");
+    }
     if (!input.password) {
       setErrorPassword(true);
       setHelperTextPassword("Password is empty");
     }
 
-    if (input.email && input.password) {
+    if (input.email && input.password && validator.isEmail(input.email)) {
       setErrorEmail(false);
       setHelperTextEmail("");
       setErrorPassword(false);
