@@ -13,11 +13,12 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import dayjs from "dayjs";
+import validator from "validator";
 
 const Copyright = () => {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © place holder "}
+      {"Copyright © Place Holder "}
 
       {/* <Link color="inherit" href="https://material-ui.com/">
         Your Website
@@ -30,7 +31,7 @@ const Copyright = () => {
 
 const useStyles = makeStyles((theme) => ({
   paper: {
-    marginTop: theme.spacing(17),
+    marginTop: theme.spacing(15),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -54,20 +55,52 @@ const SignIn = () => {
     email: "",
     password: "",
   });
+  const [errorPassword, setErrorPassword] = React.useState(false);
+  const [helperTextPassword, setHelperTextPassword] = React.useState("");
+
+  const [errorEmail, setErrorEmail] = React.useState(false);
+  const [helperTextEmail, setHelperTextEmail] = React.useState("");
 
   // const handleEmailValidation = () => {};
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    if (name === "email") {
+      setErrorEmail(false);
+      setHelperTextEmail("");
+    }
+    if (name === "password") {
+      setErrorPassword(false);
+      setHelperTextPassword("");
+    }
+
+    if (name === "email" && !validator.isEmail(value)) {
+      setErrorEmail(true);
+      setHelperTextEmail("Invalid email");
+    }
     setInput({ ...input, [name]: value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!input.email) {
+      setErrorEmail(true);
+      setHelperTextEmail("Email is empty");
+    }
+    if (!input.password) {
+      setErrorPassword(true);
+      setHelperTextPassword("Password is empty");
+    }
 
-    window.alert(
-      `Your email is ${input.email}. Your password is ${input.password}`
-    );
+    if (input.email && input.password) {
+      setErrorEmail(false);
+      setHelperTextEmail("");
+      setErrorPassword(false);
+      setHelperTextPassword("");
+      window.alert(
+        `Your email is ${input.email}. Your password is ${input.password}`
+      );
+    }
   };
 
   return (
@@ -88,7 +121,8 @@ const SignIn = () => {
           <TextField
             variant="outlined"
             margin="normal"
-            // error={handleEmailValidation}
+            error={errorEmail}
+            helperText={helperTextEmail}
             onChange={handleChange}
             required
             fullWidth
@@ -102,6 +136,8 @@ const SignIn = () => {
           <TextField
             variant="outlined"
             margin="normal"
+            error={errorPassword}
+            helperText={helperTextPassword}
             onChange={handleChange}
             required
             fullWidth
