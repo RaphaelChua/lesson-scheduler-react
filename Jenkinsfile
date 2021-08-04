@@ -18,7 +18,7 @@ pipeline {
 
     stage('Notify') {
       steps {
-        bat '%PYTHON3% telegram.py %botID% %chatID% "Testing! 123"'
+        bat '%PYTHON3% telegram.py %botID% %chatID% "New updates on http://test.frontierviewer.com/#/sign-in"'
       }
     }
 
