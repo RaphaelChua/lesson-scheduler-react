@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import Routes from "./routes";
 import TopAppBar from "./topappbar";
-import { BrowserRouter, Route } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
 // import { makeStyles } from "@material-ui/core/styles";
 import LazyPageLoader from "../../components/LazyPageLoader";
 
@@ -40,14 +40,14 @@ const DefaultContainer = ({ match }) => {
 
 const Root = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Suspense fallback={<LazyPageLoader />}>
         {/* <Switch> */}
         <Route path="/v1" component={DefaultContainer} />
         <Route component={LoginContainer} />
         {/* </Switch> */}
       </Suspense>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
