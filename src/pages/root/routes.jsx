@@ -1,5 +1,5 @@
 import React, { lazy } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import RouteCustom from "../../components/Routes/RouteCustom";
 
 const main = lazy(() => import("../main"));

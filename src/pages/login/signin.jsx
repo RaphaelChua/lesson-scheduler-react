@@ -18,7 +18,6 @@ import { authenticationAction } from "../../store/action";
 import { useDispatch, useSelector } from "react-redux";
 import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert from "@material-ui/lab/Alert";
-import history from "../../utils/history";
 
 const Alert = (props) => {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -81,6 +80,7 @@ const SignIn = () => {
     }
   }, [authentication]);
 
+  // eslint-disable-next-line no-unused-vars
   const handleClick = () => {
     setOpen(true);
   };

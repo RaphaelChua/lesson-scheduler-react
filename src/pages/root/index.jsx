@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import Routes from "./routes";
 import TopAppBar from "./topappbar";
+// eslint-disable-next-line no-unused-vars
 import { BrowserRouter as BRouter, Route, Switch } from "react-router-dom";
 import { ConnectedRouter as CRouter } from "connected-react-router";
 import { history } from "../../utils/history";

@@ -11,12 +11,12 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Divider from "@material-ui/core/Divider";
 import { useHistory } from "react-router";
 import Grid from "@material-ui/core/Grid";
-import { Box } from "@material-ui/core";
 
 const TopAppBar = ({ classes, open, setOpen }) => {
   const history = useHistory();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  // eslint-disable-next-line no-unused-vars
   const [profileName, setProfileName] = React.useState("John Doe");
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -33,6 +33,7 @@ const TopAppBar = ({ classes, open, setOpen }) => {
     setMobileMoreAnchorEl(null);
   };
 
+  // eslint-disable-next-line no-unused-vars
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
