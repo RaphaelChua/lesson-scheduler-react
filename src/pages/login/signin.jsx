@@ -14,6 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import dayjs from "dayjs";
 import validator from "validator";
+import httpClient from "../../services/HTTPClient";
 
 const Copyright = () => {
   return (
@@ -101,6 +102,15 @@ const SignIn = () => {
       setHelperTextEmail("");
       setErrorPassword(false);
       setHelperTextPassword("");
+
+      httpClient
+        .Post("v1/user/authenticate", {
+          email: "johndoe@gmail.com",
+          password: "johndoe",
+        })
+        .then((value) => {
+          console.log(value);
+        });
       window.alert(
         `Your email is ${input.email}. Your password is ${input.password}`
       );

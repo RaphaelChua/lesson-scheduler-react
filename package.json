@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://localhost:3000/#/sign-in",
   "dependencies": {
     "@devexpress/dx-react-core": "^2.7.6",
     "@devexpress/dx-react-scheduler": "^2.7.6",
@@ -11,6 +12,7 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.21.1",
     "dayjs": "^1.10.6",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
