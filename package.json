@@ -2,6 +2,13 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "webpack serve --env ENVIRONMENT=development --config webpack.dev.js",
+    "start": "env-cmd -f .env react-scripts start",
+    "build": "webpack --mode production --env ENVIRONMENT=development --config webpack.prod.js",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
   "dependencies": {
     "@babel/core": "^7.13.16",
     "@babel/polyfill": "^7.12.1",
@@ -47,13 +54,6 @@
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.1.4"
-  },
-  "scripts": {
-    "dev": "webpack serve --env ENVIRONMENT=development --config webpack.dev.js",
-    "start": "env-cmd -f .env react-scripts start",
-    "build": "webpack --mode production --env ENVIRONMENT=production --config webpack.prod.js",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
