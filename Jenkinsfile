@@ -8,11 +8,11 @@ pipeline {
       }
     }
 
-    stage('Notify') {
-      steps {
-        bat '%PYTHON3% telegram.py %botID% %chatID% "New updates on http://test.frontierviewer.com/sign-in"'
-      }
-    }
+    // stage('Notify') {
+    //   steps {
+    //     bat '%PYTHON3% telegram.py %botID% %chatID% "New updates on http://test.frontierviewer.com/sign-in"'
+    //   }
+    // }
 
   }
 }
