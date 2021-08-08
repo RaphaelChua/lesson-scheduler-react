@@ -4,10 +4,8 @@ import { history } from "../../utils/history";
 import jwt from "jsonwebtoken";
 
 const authenticate = (email, password) => {
-  console.log("knnn===");
   return async (dispatch) => {
     try {
-      console.log("FUCK?");
       const token = await (await API.authenticate(email, password)).data;
 
       localStorage.setItem("token", token);
