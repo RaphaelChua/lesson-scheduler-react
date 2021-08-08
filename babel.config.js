@@ -1,0 +1,34 @@
+module.exports = {
+  presets: ["@babel/preset-env", "@babel/preset-react"],
+  ignore: ["/node_modules/"],
+  plugins: [
+    "emotion",
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        legacy: true,
+      },
+    ],
+    "@babel/plugin-proposal-class-properties",
+    [
+      "@babel/plugin-transform-classes",
+      {
+        loose: true,
+      },
+    ],
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-transform-spread",
+    "@babel/plugin-syntax-async-generators",
+    "@babel/plugin-transform-regenerator",
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        corejs: 3,
+      },
+    ],
+    "@babel/plugin-transform-block-scoped-functions",
+    "@babel/plugin-transform-computed-properties",
+    "@babel/plugin-proposal-optional-chaining",
+    "@babel/plugin-proposal-export-default-from",
+  ],
+};

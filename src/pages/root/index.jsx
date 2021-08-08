@@ -1,8 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import Routes from "./routes";
 import TopAppBar from "./topappbar";
-// eslint-disable-next-line no-unused-vars
-import { BrowserRouter as BRouter, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { ConnectedRouter as CRouter } from "connected-react-router";
 import { history } from "../../utils/history";
 import { makeStyles } from "@material-ui/core/styles";
@@ -137,7 +136,7 @@ const Root = () => {
     <CRouter history={history}>
       <Suspense fallback={<LazyPageLoader />}>
         <Switch>
-          <Route path="/v1" component={DefaultContainer} />
+          {/* <Route path="/v1" component={DefaultContainer} /> */}
           <Route component={LoginContainer} />
         </Switch>
       </Suspense>

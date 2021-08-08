@@ -5,7 +5,7 @@ class HTTPClient {
   baseURL = "";
 
   constructor() {
-    this.baseURL = `http://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/api`;
+    this.baseURL = `http://${process.env.baseURL}/api`;
     // this.baseURL = `${Config.baseURL}/api`;
     this.axiosClient = axios.create();
     this.token = "";

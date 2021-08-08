@@ -7,12 +7,24 @@ import configureStore from "./utils/store";
 
 const store = configureStore({});
 
-ReactDOM.render(
+const app = (
   <Provider store={store}>
     <Root />
-  </Provider>,
-  document.getElementById("root")
+  </Provider>
 );
+
+ReactDOM.render(app, document.getElementById("root"));
+
+if (module.hot) {
+  module.hot.accept();
+}
+
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <Root />
+//   </Provider>,
+//   document.getElementById("root")
+// );
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
