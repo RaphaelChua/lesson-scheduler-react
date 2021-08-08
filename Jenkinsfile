@@ -1,24 +1,16 @@
 pipeline {
   agent any
   stages {
-    stage('Initialise') {
+    stage('Initialise and Run') {
       steps {
-        bat 'yarn install'
-      }
-    }
-
-    stage('Publish') {
-      steps {
-        bat 'yarn build'
-        bat 'del /f/s/q C:\\website-react\\*'
-        bat 'for /d %%x in (C:\\website-react\\*) do rd /s /q "%%x"'
-        bat 'xcopy "C:\\Windows\\System32\\config\\systemprofile\\AppData\\Local\\Jenkins.jenkins\\workspace\\lesson-scheduler-react_main\\build" "C:\\website-react" /h /i /c /k /e /r /y'
+        bat 'docker-compose down -v'
+        bat 'docker-compose up --build -d'
       }
     }
 
     stage('Notify') {
       steps {
-        bat '%PYTHON3% telegram.py %botID% %chatID% "New updates on http://test.frontierviewer.com/#/sign-in"'
+        bat '%PYTHON3% telegram.py %botID% %chatID% "New updates on http://test.frontierviewer.com/sign-in"'
       }
     }
 

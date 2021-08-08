@@ -10,7 +10,7 @@ const authenticate = (email, password) => {
 
       localStorage.setItem("token", token);
 
-      const decodedToken = jwt.verify(token, "secret");
+      const decodedToken = jwt.verify(token, process.env.jwtPrivateKey);
 
       const userInfo = {
         id: decodedToken.id,

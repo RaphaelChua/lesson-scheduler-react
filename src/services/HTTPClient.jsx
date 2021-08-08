@@ -5,7 +5,7 @@ class HTTPClient {
   baseURL = "";
 
   constructor() {
-    this.baseURL = `http://127.0.0.1:5000/api`;
+    this.baseURL = `http://${process.env.baseURL}/api`;
     // this.baseURL = `${Config.baseURL}/api`;
     this.axiosClient = axios.create();
     this.token = "";
