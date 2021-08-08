@@ -136,7 +136,7 @@ const Root = () => {
     <CRouter history={history}>
       <Suspense fallback={<LazyPageLoader />}>
         <Switch>
-          {/* <Route path="/v1" component={DefaultContainer} /> */}
+          <Route path="/v1" component={DefaultContainer} />
           <Route component={LoginContainer} />
         </Switch>
       </Suspense>

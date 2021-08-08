@@ -11,7 +11,6 @@ module.exports = (env) => {
 
   return merge(envCommon, {
     devtool: "inline-source-map",
-
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       // new BundleAnalyzerPlugin(),
@@ -23,13 +22,12 @@ module.exports = (env) => {
       historyApiFallback: true,
       host: "127.0.0.1",
       port: "3000",
-      inline: false,
       watchOptions: {
         poll: true,
         ignored: /node_modules/,
       },
       open: true,
-      openPage: "#/sign-in",
+      openPage: "sign-in",
     },
   });
 };

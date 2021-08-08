@@ -41,16 +41,8 @@ module.exports = (env) => {
         resolve("./node_modules"),
         // join(__dirname, "js/helpers"),
       ],
-      extensions: [".js", ".jsx", ".css", ".scss", ".json"],
+      extensions: [".js", ".jsx", ".json"],
     },
-    externals: [
-      {
-        "./cptable": "var cptable",
-      },
-      {
-        "./jszip": "jszip",
-      },
-    ],
     node: {
       fs: "empty",
     },
@@ -60,8 +52,8 @@ module.exports = (env) => {
       }),
       new webpack.DefinePlugin(envKeys),
       new HtmlWebpackPlugin({
-        template: "./public/index.html",
-        favicon: "./public/favicon.ico",
+        template: "./src/index.html",
+        favicon: "./src/images/favicon.ico",
       }),
     ],
     module: {
@@ -77,15 +69,6 @@ module.exports = (env) => {
           options: {
             configFile: resolve("babel.config.js"),
           },
-        },
-        {
-          test: /\.(sa|sc|c)ss$/,
-          use: [
-            "style-loader",
-            "css-loader",
-            "resolve-url-loader",
-            "sass-loader",
-          ],
         },
         {
           test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2?|mp3)?$/,

@@ -20,12 +20,7 @@ module.exports = {
     "@babel/plugin-transform-spread",
     "@babel/plugin-syntax-async-generators",
     "@babel/plugin-transform-regenerator",
-    [
-      "@babel/plugin-transform-runtime",
-      {
-        corejs: 3,
-      },
-    ],
+    "@babel/plugin-transform-runtime",
     "@babel/plugin-transform-block-scoped-functions",
     "@babel/plugin-transform-computed-properties",
     "@babel/plugin-proposal-optional-chaining",

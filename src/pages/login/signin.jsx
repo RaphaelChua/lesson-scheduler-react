@@ -16,12 +16,12 @@ import dayjs from "dayjs";
 import validator from "validator";
 import { authenticationAction } from "../../store/action";
 import { useDispatch, useSelector } from "react-redux";
-// import Snackbar from "@material-ui/core/Snackbar";
-// import MuiAlert from "@material-ui/lab/Alert";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
-// const Alert = (props) => {
-//   return <MuiAlert elevation={6} variant="filled" {...props} />;
-// };
+const Alert = (props) => {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+};
 
 const Copyright = () => {
   return (
@@ -201,11 +201,11 @@ const SignIn = () => {
       <Box mt={8}>
         <Copyright />
       </Box>
-      {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
         <Alert onClose={handleClose} severity={"error"}>
           {authentication.error}
         </Alert>
-      </Snackbar> */}
+      </Snackbar>
     </Container>
   );
 };
