@@ -7,7 +7,6 @@ const main = lazy(() => import("../main"));
 const settings = lazy(() => import("../settings"));
 
 const Routes = ({ match }) => {
-  console.log(match);
   return (
     <Switch>
       <RouteCustom

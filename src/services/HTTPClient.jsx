@@ -1,13 +1,11 @@
 import axios from "axios";
-/* eslint import/no-extraneous-dependencies: "off" */
-// import Config from "Config";
 
 /** This class handles all HTTP requests. */
 class HTTPClient {
   baseURL = "";
 
   constructor() {
-    this.baseURL = "http://localhost:5000/api";
+    this.baseURL = `http://${process.env.REACT_APP_API_HOST}:${process.env.REACT_APP_API_PORT}/api`;
     // this.baseURL = `${Config.baseURL}/api`;
     this.axiosClient = axios.create();
     this.token = "";

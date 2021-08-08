@@ -14,7 +14,15 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import dayjs from "dayjs";
 import validator from "validator";
-import httpClient from "../../services/HTTPClient";
+import { authenticationAction } from "../../store/action";
+import { useDispatch, useSelector } from "react-redux";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
+import history from "../../utils/history";
+
+const Alert = (props) => {
+  return <MuiAlert elevation={6} variant="filled" {...props} />;
+};
 
 const Copyright = () => {
   return (
@@ -52,9 +60,10 @@ const useStyles = makeStyles((theme) => ({
 
 const SignIn = () => {
   const classes = useStyles();
+  const dispatch = useDispatch();
   const [input, setInput] = React.useState({
-    email: "",
-    password: "",
+    email: "johndoe@gmail.com",
+    password: "johndoe",
   });
   const [errorPassword, setErrorPassword] = React.useState(false);
   const [helperTextPassword, setHelperTextPassword] = React.useState("");
@@ -62,7 +71,23 @@ const SignIn = () => {
   const [errorEmail, setErrorEmail] = React.useState(false);
   const [helperTextEmail, setHelperTextEmail] = React.useState("");
 
-  // const handleEmailValidation = () => {};
+  const [open, setOpen] = React.useState(false);
+
+  const authentication = useSelector((state) => state.authentication);
+
+  React.useEffect(() => {
+    if (authentication.error !== "") {
+      setOpen(true);
+    }
+  }, [authentication]);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    setOpen(false);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -75,10 +100,6 @@ const SignIn = () => {
       setHelperTextPassword("");
     }
 
-    // if (name === "email" && !validator.isEmail(value)) {
-    //   setErrorEmail(true);
-    //   setHelperTextEmail("Invalid email");
-    // }
     setInput({ ...input, [name]: value });
   };
 
@@ -103,17 +124,7 @@ const SignIn = () => {
       setErrorPassword(false);
       setHelperTextPassword("");
 
-      httpClient
-        .Post("v1/user/authenticate", {
-          email: "johndoe@gmail.com",
-          password: "johndoe",
-        })
-        .then((value) => {
-          console.log(value);
-        });
-      window.alert(
-        `Your email is ${input.email}. Your password is ${input.password}`
-      );
+      dispatch(authenticationAction.authenticate(input.email, input.password));
     }
   };
 
@@ -190,6 +201,11 @@ const SignIn = () => {
       <Box mt={8}>
         <Copyright />
       </Box>
+      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity={"error"}>
+          {authentication.error}
+        </Alert>
+      </Snackbar>
     </Container>
   );
 };

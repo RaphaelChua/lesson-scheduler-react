@@ -1,7 +1,9 @@
 import React, { Suspense, lazy } from "react";
 import Routes from "./routes";
 import TopAppBar from "./topappbar";
-import { BrowserRouter, HashRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter as BRouter, Route, Switch } from "react-router-dom";
+import { ConnectedRouter as CRouter } from "connected-react-router";
+import { history } from "../../utils/history";
 import { makeStyles } from "@material-ui/core/styles";
 import LazyPageLoader from "../../components/LazyPageLoader";
 import { CssBaseline } from "@material-ui/core";
@@ -131,14 +133,14 @@ const DefaultContainer = ({ match }) => {
 
 const Root = () => {
   return (
-    <HashRouter>
+    <CRouter history={history}>
       <Suspense fallback={<LazyPageLoader />}>
         <Switch>
           <Route path="/v1" component={DefaultContainer} />
           <Route component={LoginContainer} />
         </Switch>
       </Suspense>
-    </HashRouter>
+    </CRouter>
   );
 };
 

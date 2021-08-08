@@ -80,7 +80,7 @@ const TopAppBar = ({ classes, open, setOpen }) => {
     >
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
-          size="large"
+          size={"medium"}
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
@@ -94,55 +94,53 @@ const TopAppBar = ({ classes, open, setOpen }) => {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar>
+    <AppBar
+      position="fixed"
+      className={clsx(classes.appBar, {
+        [classes.appBarShift]: open,
+      })}
+    >
+      <Toolbar>
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          onClick={() => setOpen(true)}
+          edge="start"
+          className={clsx(classes.menuButton, {
+            [classes.hide]: open,
+          })}
+        >
+          <MenuIcon />
+        </IconButton>
+        <div className={classes.grow} />
+        <div className={classes.sectionDesktop}>
+          {" "}
           <IconButton
+            edge="end"
+            aria-label="account of current user"
+            aria-controls={menuId}
+            aria-haspopup="true"
+            onClick={handleProfileMenuOpen}
             color="inherit"
-            aria-label="open drawer"
-            onClick={() => setOpen(true)}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open,
-            })}
           >
-            <MenuIcon />
-          </IconButton>
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            {" "}
-            <IconButton
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
+            <Grid
+              style={{
+                display: "flex",
+                alignItems: "center",
+                flexWrap: "wrap",
+              }}
             >
-              <Grid
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  flexWrap: "wrap",
-                }}
-              >
-                <AccountCircle />
-                <Typography style={{ padding: 10 }} variant="caption">
-                  {profileName}
-                </Typography>
-              </Grid>
-            </IconButton>
-          </div>
-        </Toolbar>
-        {renderMenu}
-        {renderMobileMenu}
-      </AppBar>
-    </Box>
+              <AccountCircle />
+              <Typography style={{ padding: 10 }} variant="caption">
+                {profileName}
+              </Typography>
+            </Grid>
+          </IconButton>
+        </div>
+      </Toolbar>
+      {renderMenu}
+      {renderMobileMenu}
+    </AppBar>
   );
 };
 
