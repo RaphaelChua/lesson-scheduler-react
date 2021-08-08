@@ -74,6 +74,16 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
+  sectionDesktop: {
+    // display: "none",
+    [theme.breakpoints.up("md")]: {
+      display: "flex",
+    },
+  },
+
+  grow: {
+    flexGrow: 1,
+  },
 }));
 
 const LoginContainer = ({ match }) => {
@@ -109,7 +119,7 @@ const DefaultContainer = ({ match }) => {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <TopAppBar useStyles={useStyles} open={open} setOpen={setOpen} />
+      <TopAppBar classes={classes} open={open} setOpen={setOpen} />
       <SideMenu useStyles={useStyles} open={open} setOpen={setOpen} />
       <main className={classes.content}>
         <div className={classes.toolbar} />
