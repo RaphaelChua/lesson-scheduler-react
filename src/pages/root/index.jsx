@@ -2,7 +2,12 @@ import React, { Suspense, lazy } from "react";
 import Routes from "./routes";
 import TopAppBar from "./topappbar";
 // eslint-disable-next-line no-unused-vars
-import { BrowserRouter as BRouter, Route, Switch } from "react-router-dom";
+import {
+  BrowserRouter as BRouter,
+  HashRouter as HRouter,
+  Route,
+  Switch,
+} from "react-router-dom";
 import { ConnectedRouter as CRouter } from "connected-react-router";
 import { history } from "../../utils/history";
 import { makeStyles } from "@material-ui/core/styles";
