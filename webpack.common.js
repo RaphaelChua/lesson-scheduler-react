@@ -14,11 +14,15 @@ module.exports = (env) => {
   // Create the fallback path (the production .env)
   const basePath = currentPath + "/.env";
 
+  console.log(basePath);
+
   // We're concatenating the environment name to our filename to specify the correct env file!
-  const envPath = basePath + "." + env.ENVIRONMENT;
+  const envPath = currentPath + `/.${env.ENVIRONMENT}.env`;
 
   // Check if the file exists, otherwise fall back to the production .env
   const finalPath = fs.existsSync(envPath) ? envPath : basePath;
+
+  console.log(envPath);
 
   // Set the path parameter in the dotenv config
   const fileEnv = dotenv.config({ path: finalPath }).parsed;

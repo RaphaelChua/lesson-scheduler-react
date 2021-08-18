@@ -2,11 +2,13 @@ import React from "react";
 import clsx from "clsx";
 import { useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
+import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
 // import CssBaseline from "@material-ui/core/CssBaseline";
 // import AppBar from "@material-ui/core/AppBar";
 // import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 // import Typography from "@material-ui/core/Typography";
+import Hidden from "@material-ui/core/Hidden";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import EventNoteIcon from "@material-ui/icons/EventNote";
@@ -28,20 +30,10 @@ const SideMenu = ({ useStyles, open, setOpen }) => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  return (
-    <Drawer
-      variant="permanent"
-      className={clsx(classes.drawer, {
-        [classes.drawerOpen]: open,
-        [classes.drawerClose]: !open,
-      })}
-      classes={{
-        paper: clsx({
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open,
-        }),
-      }}
-    >
+
+  const drawer = (
+    <>
+      {" "}
       <div className={classes.toolbar}>
         <IconButton onClick={handleDrawerClose}>
           {theme.direction === "rtl" ? (
@@ -81,7 +73,27 @@ const SideMenu = ({ useStyles, open, setOpen }) => {
           <ListItemText primary={"Settings"} />
         </ListItem>
       </List>
-    </Drawer>
+    </>
+  );
+
+  return (
+    <>
+      <Drawer
+        variant="permanent"
+        className={clsx(classes.drawer, {
+          [classes.drawerOpen]: open,
+          [classes.drawerClose]: !open,
+        })}
+        classes={{
+          paper: clsx({
+            [classes.drawerOpen]: open,
+            [classes.drawerClose]: !open,
+          }),
+        }}
+      >
+        {drawer}
+      </Drawer>
+    </>
   );
 };
 

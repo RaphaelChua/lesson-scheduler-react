@@ -9,12 +9,15 @@ import LazyPageLoader from "../../components/LazyPageLoader";
 import { CssBaseline } from "@material-ui/core";
 import SideMenu from "./sidemenu";
 import RouteCustom from "../../components/Routes/RouteCustom";
+import { useResponsive } from "../../hooks";
 
 const SignIn = lazy(() => import("../login/signin"));
 const SignUp = lazy(() => import("../login/signup"));
 const ForgotPass = lazy(() => import("../login/forgotpass"));
 
 const drawerWidth = 240;
+
+export const SideMenuContext = React.createContext();
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -41,10 +44,15 @@ const useStyles = makeStyles((theme) => ({
   hide: {
     display: "none",
   },
-  drawer: {
+  mobileDrawer: {
     width: drawerWidth,
-    flexShrink: 0,
-    whiteSpace: "nowrap",
+  },
+  drawer: {
+    [theme.breakpoints.up("sm")]: {
+      width: drawerWidth,
+      flexShrink: 0,
+      whiteSpace: "nowrap",
+    },
   },
   drawerOpen: {
     width: drawerWidth,
@@ -118,6 +126,16 @@ const DefaultContainer = ({ match }) => {
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
+
+  const [isMobileView, windowSize] = useResponsive();
+
+  const renderSizeMenu = () =>
+    isMobileView ? (
+      <div>MOBILE</div>
+    ) : (
+      <SideMenu useStyles={useStyles} open={open} setOpen={setOpen} />
+    );
+
   return (
     <div className={classes.root}>
       <CssBaseline />
