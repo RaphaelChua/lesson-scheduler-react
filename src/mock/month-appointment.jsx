@@ -116,12 +116,8 @@ export const appointments = [
   },
   {
     title: "Vacation",
-    startDate: new Date(2021, 5, 22),
-    endDate: new Date(2021, 8, 1),
-  },
-  {
-    title: "Vacation",
-    startDate: new Date(2021, 8, 28),
-    endDate: new Date(2021, 9, 7),
+    allDay: true,
+    startDate: new Date(2021, 7, 22),
+    endDate: new Date(2021, 7, 23),
   },
 ];
