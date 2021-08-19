@@ -127,14 +127,14 @@ const DefaultContainer = ({ match }) => {
 
   const [open, setOpen] = React.useState(false);
 
-  const [isMobileView, windowSize] = useResponsive();
+  // const [isMobileView, windowSize] = useResponsive();
 
-  const renderSizeMenu = () =>
-    isMobileView ? (
-      <div>MOBILE</div>
-    ) : (
-      <SideMenu useStyles={useStyles} open={open} setOpen={setOpen} />
-    );
+  // const renderSizeMenu = () =>
+  //   isMobileView ? (
+  //     <div>MOBILE</div>
+  //   ) : (
+  //     <SideMenu useStyles={useStyles} open={open} setOpen={setOpen} />
+  //   );
 
   return (
     <div className={classes.root}>

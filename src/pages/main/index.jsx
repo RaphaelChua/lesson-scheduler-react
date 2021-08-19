@@ -9,6 +9,8 @@ import {
   DateNavigator,
   Appointments,
   TodayButton,
+  ViewSwitcher,
+  DayView,
 } from "@devexpress/dx-react-scheduler-material-ui";
 import { getAppointments } from "../../services/API";
 import dayjs from "dayjs";
@@ -16,16 +18,25 @@ import dayjs from "dayjs";
 const Main = () => {
   const [data, setData] = React.useState();
 
+  const [currentView, setCurrentView] = React.useState();
   const [currentDate, setCurrentDate] = React.useState(dayjs().toDate());
   React.useEffect(() => {
     getAppointments(dayjs().toISOString()).then((data) => {
       setData(data.data);
     });
   }, []);
-  //   const [date, setDate] = React.useState("2021-08-02");
 
-  const onNavigateHandler = (direction) => {
-    console.log(direction);
+  const onNavigateHandler = (newDate) => {
+    console.log(newDate);
+    getAppointments(newDate).then((data) => {
+      setData(data.data);
+    });
+    setCurrentDate(newDate);
+  };
+
+  const handleViewNameChange = (viewName) => {
+    console.log(viewName);
+    setCurrentView(viewName);
   };
 
   return (
@@ -34,11 +45,17 @@ const Main = () => {
         <ViewState
           defaultCurrentDate={dayjs().toDate()}
           currentDate={currentDate}
+          onCurrentDateChange={onNavigateHandler}
+          currentViewName={currentView}
+          onCurrentViewNameChange={handleViewNameChange}
         />
         <MonthView />
+        <DayView />
+        <WeekView />
         <Toolbar />
-        <DateNavigator onNavigate={onNavigateHandler} />
+        <DateNavigator />
         <TodayButton />
+        <ViewSwitcher />
         <Appointments />
       </Scheduler>
     </Paper>
